@@ -1,0 +1,35 @@
+{
+  "name": "python-prints",
+  "version": "1.0.0",
+  "description": "A Node.js package for managing printers and printing PDF files, powered by Python.",
+  "homepage": "https://github.com/mhmd-almalki/python-prints#readme",
+  "bugs": {
+    "url": "https://github.com/mhmd-almalki/python-prints/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhmd-almalki/python-prints.git"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "print",
+    "printer",
+    "printers",
+    "printing",
+    "nodejs",
+    "python",
+    "pdf"
+  ],
+  "license": "MIT",
+  "author": "Mohammed Almalki",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
