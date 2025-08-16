@@ -42,6 +42,6 @@ run();
 ```
 
 ## Notes
--The file path must be absolute.
--Works only on Windows for now.
--Requires no Python installation (bundled binary included).
+- The file path must be absolute.
+- Works only on Windows for now.
+- Requires no Python installation (bundled binary included).
