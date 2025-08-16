@@ -1,6 +1,6 @@
 {
   "name": "python-prints",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Node.js package for managing printers and printing PDF files, powered by Python.",
   "homepage": "https://github.com/mhmd-almalki/python-prints#readme",
   "bugs": {
