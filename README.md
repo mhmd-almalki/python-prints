@@ -12,6 +12,8 @@ npm install python-prints
 ```
 
 
+## Usage
+
 ```js
 const { list, setDefault, printPdf } = require("python-prints");
 
@@ -39,3 +41,7 @@ async function run() {
 run();
 ```
 
+## Notes
+-The file path must be absolute.
+-Works only on Windows for now.
+-Requires no Python installation (bundled binary included).
