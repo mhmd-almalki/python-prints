@@ -9,7 +9,7 @@ Currently supports **Windows**.
 
 ```bash
 npm install python-prints
-
+```
 
 
 ```js
@@ -37,5 +37,5 @@ async function run() {
 }
 
 run();
-
+```
 
