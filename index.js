@@ -1,41 +1,31 @@
+// index.js
 const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// --- Resolve binary path ---
-function getBinaryDir() {
-    // Go up from src/ to package root, then into bin/<platform>/python-prints
-    const base = path.join(__dirname, '..', 'bin');
-    if (process.platform === 'win32') {
-        return path.join(base, 'win', 'python-prints');
-    }
-    if (process.platform === 'darwin') {
-        return path.join(base, 'mac', 'python-prints');
-    }
-    return path.join(base, 'linux', 'python-prints');
-}
-
 function getBinaryPath() {
-    return path.join(
-        getBinaryDir(),
-        process.platform === 'win32' ? 'python-prints.exe' : 'python-prints'
-    );
-}
-
-function ensureExec(p) {
-    if (process.platform !== 'win32') {
-        try { fs.chmodSync(p, 0o755); } catch { }
+    const root = __dirname;
+    if (process.platform === 'win32') {
+        return path.join(root, 'bin', 'win', 'python-prints', 'python-prints.exe');
     }
+    throw new Error('python-prints: this build currently includes only the Windows binary.');
 }
 
-// --- Helper to run the binary ---
-function runTool(args) {
-    return new Promise((resolve, reject) => {
-        const exe = getBinaryPath();
-        ensureExec(exe);
+function getBinaryDir() {
+    return path.dirname(getBinaryPath());
+}
 
+function runTool(args) {
+    const exe = getBinaryPath();
+    const cwd = getBinaryDir();
+
+    if (process.platform !== 'win32') {
+        try { fs.chmodSync(exe, 0o755); } catch { }
+    }
+
+    return new Promise((resolve, reject) => {
         const child = spawn(exe, args, {
-            cwd: getBinaryDir(),   // must be cwd so bundled DLLs are found
+            cwd,
             windowsHide: true,
             env: process.env,
         });
@@ -55,10 +45,9 @@ function runTool(args) {
     });
 }
 
-// --- Public API ---
 async function list() {
     const res = await runTool(['list', '--json']);
-    return JSON.parse(res);
+    return JSON.parse(res || '{}');
 }
 
 async function setDefault(printer) {
@@ -68,14 +57,20 @@ async function setDefault(printer) {
 }
 
 async function printPdf(filePath, options = {}) {
-    if (!filePath) throw new Error('filePath is required');
+    if (!filePath) {
+        throw new Error('filePath is required');
+    }
+
+    if (!path.isAbsolute(filePath) || !fs.existsSync(filePath)) {
+        throw new Error('File in not Found (Note: File path should be absolute)');
+    }
 
     const args = ['print', filePath];
     if (options.printer) args.push('--printer', options.printer);
     if (options.copies) args.push('--copies', String(options.copies));
 
-    const msg = await runTool(args);
-    return { ok: true, message: msg };
+    const message = await runTool(args);
+    return { ok: true, message };
 }
 
 module.exports = { list, setDefault, printPdf };

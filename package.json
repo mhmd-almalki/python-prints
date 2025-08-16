@@ -12,6 +12,7 @@
   },
   "files": [
     "bin/",
+    "index.js",
     "README.md",
     "LICENSE"
   ],
