@@ -26,7 +26,7 @@
     "pdf"
   ],
   "license": "MIT",
-  "author": "Mohammed Almalki",
+  "author": "Mohammed Almalki <mr.mhmd.almalki@gmail.com> (https://mhmd-almalki.com)",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
