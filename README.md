@@ -45,3 +45,6 @@ run();
 - The file path must be absolute.
 - Works only on Windows for now.
 - Requires no Python installation (bundled binary included).
+
+
+### if you need anything or you want to give me a feedback or a suggestion, you can contact me on my email (mr.mhmd.almalki@gmail.com)
