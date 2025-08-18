@@ -47,4 +47,5 @@ run();
 - Requires no Python installation (bundled binary included).
 
 
-### if you need anything or you want to give me a feedback or a suggestion, you can contact me on my email (mr.mhmd.almalki@gmail.com)
+## Contact | Feedback | Suggestion
+if you need anything or you want to give me a feedback or a suggestion, you can contact me on my email (mr.mhmd.almalki@gmail.com)
